@@ -37,7 +37,7 @@ def match_ends(words):
 # before combining them.
 def front_x(words):
     words.sort()
-    return sorted(words, key=is_x, reverse=True)
+    return sorted(words, key=lambda w: w[0] == "x", reverse=True)
 
     # or like they implied
     xs = []
@@ -62,7 +62,7 @@ def is_x(word):
 
 
 def sort_last(tuples):
-    return sorted(tuples, key=tuple)
+    return sorted(tuples, key=lambda t: t[-1])
 
 
 def tuple(tup):
