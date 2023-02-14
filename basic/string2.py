@@ -8,6 +8,7 @@
 
 # Additional basic string exercises
 
+
 # D. verbing
 # Given a string, if its length is at least 3,
 # add 'ing' to its end.
@@ -15,6 +16,9 @@
 # add 'ly' instead.
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
+from decimal import Decimal, ROUND_HALF_UP
+
+
 def verbing(s):
     if len(s) > 3:
         if s[-3:] == "ing":
@@ -47,11 +51,10 @@ def not_bad(s):
 # e.g. 'abcde', the front half is 'abc', the back half 'de'.
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
+
 def front_back(a, b):
-    print(len(a)/2)
-    print(a[0:round(len(a)/2)] + b[0:round(len(b)/2)])
-    print(a[int(-1 * len(a)/2):] + b[int(-1 * len(b)/2):])
-    return (a[0:round(len(a)/2)] + b[0:round(len(b)/2)]
+    return (a[0:int(Decimal(len(a)/2).quantize(0, "ROUND_HALF_UP"))] +
+            b[0:int(Decimal(len(b)/2).quantize(0, "ROUND_HALF_UP"))]
             + a[int(-1 * len(a)/2):] + b[int(-1 * len(b)/2):])
 
 
