@@ -57,6 +57,22 @@ def front_back(a, b):
             b[0:int(Decimal(len(b)/2).quantize(0, "ROUND_HALF_UP"))]
             + a[int(-1 * len(a)/2):] + b[int(-1 * len(b)/2):])
 
+    if len(a) % 2 == 0:
+        af = a[0:int(len(a)/2)]
+        ab = a[-1*int(len(a)/2):]
+    else:
+        af = a[0:int(len(a)/2) + 1]
+        ab = a[-1*int(len(a)/2):]
+
+    if len(b) % 2 == 0:
+        bf = b[0:int(len(b)/2)]
+        bb = b[-1*int(len(b)/2):]
+    else:
+        bf = b[0:int(len(b)/2) + 1]
+        bb = b[-1*int(len(b)/2):]
+
+    return af+bf+ab+bb
+
 
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
