@@ -36,6 +36,7 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
+
     n = s.find("not")
     b = s.find("bad")
 
@@ -53,25 +54,26 @@ def not_bad(s):
 #  a-front + b-front + a-back + b-back
 
 def front_back(a, b):
-    return (a[0:int(Decimal(len(a)/2).quantize(0, "ROUND_HALF_UP"))] +
-            b[0:int(Decimal(len(b)/2).quantize(0, "ROUND_HALF_UP"))]
-            + a[int(-1 * len(a)/2):] + b[int(-1 * len(b)/2):])
-
+    # OPTION 1
+    return (a[0:Decimal(len(a)//2.quantize(0, "ROUND_HALF_UP"))] +
+            b[0:Decimal(len(b)//2.quantize(0, "ROUND_HALF_UP"))]
+            + a[-1 * len(a)//2:] + b[-1 * len(b)//2:])
+    # OPTION 2
     if len(a) % 2 == 0:
-        af = a[0:int(len(a)/2)]
-        ab = a[-1*int(len(a)/2):]
+        a_front = a[0:len(a)//2]
+        a_back = a[-1*len(a)//2:]
     else:
-        af = a[0:int(len(a)/2) + 1]
-        ab = a[-1*int(len(a)/2):]
+        a_front = a[0:len(a)//2 + 1]
+        a_back = a[-1*len(a)//2:]
 
     if len(b) % 2 == 0:
-        bf = b[0:int(len(b)/2)]
-        bb = b[-1*int(len(b)/2):]
+        b_front = b[0:len(b)//2]
+        b_back = b[-1*len(b)//2:]
     else:
-        bf = b[0:int(len(b)/2) + 1]
-        bb = b[-1*int(len(b)/2):]
+        b_front = b[0:len(b)//2 + 1]
+        b_back = b[-1*len(b)//2:]
 
-    return af+bf+ab+bb
+    return a_front+b_front+a_back+b_back
 
 
 # Simple provided test() function used in main() to print
