@@ -55,9 +55,9 @@ def not_bad(s):
 
 def front_back(a, b):
     # OPTION 1
-    return (a[0:Decimal(len(a)//2.quantize(0, "ROUND_HALF_UP"))] +
-            b[0:Decimal(len(b)//2.quantize(0, "ROUND_HALF_UP"))]
-            + a[-1 * len(a)//2:] + b[-1 * len(b)//2:])
+    return (a[0:Decimal((len(a)//2).quantize(0, "ROUND_HALF_UP"))] +
+            b[0:Decimal((len(b)//2).quantize(0, "ROUND_HALF_UP"))] +
+            a[-1 * len(a)//2:] + b[-1 * len(b)//2:])
     # OPTION 2
     if len(a) % 2 == 0:
         a_front = a[0:len(a)//2]
